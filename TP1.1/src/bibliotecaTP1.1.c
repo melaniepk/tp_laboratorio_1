@@ -1,9 +1,10 @@
 /*
- * bibliotecaTP1.c
+ * bibliotecaTP1.1.c
  *
- *  Created on: 26 mar. 2021
+ *  Created on: 29 mar. 2021
  *      Author: mkale
  */
+
 
 /**
  * @fn int calcularSuma(int, int)
@@ -134,4 +135,3 @@ int calcularFactorial2(int b)
 
 	return factorial;
 }
-

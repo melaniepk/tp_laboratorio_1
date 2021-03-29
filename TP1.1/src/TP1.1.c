@@ -25,7 +25,7 @@ que contenga las funciones para realizar las cinco operaciones.
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "bibliotecaTP1.h"
+#include "bibliotecaTP1.1.h"
 /*
 int calcularSuma(int a, int b);
 int calcularResta(int a, int b);
@@ -91,7 +91,7 @@ int main(void) {
 			break;
 			case 5:
 				printf("Ingreso a la opcion Factorial\n");
-				printf("Calculo con el primer operando: &d \n", x);
+				printf("Calculo con el primer operando: %d \n", x);
 				factorial = calcularFactorial(x);
 				printf("El factorial %d es: %d\n",x, factorial);
 				printf("Calculo con el segundo operando: %d\n", y);
