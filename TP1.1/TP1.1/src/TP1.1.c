@@ -26,21 +26,17 @@ que contenga las funciones para realizar las cinco operaciones.
 #include <stdio.h>
 #include <stdlib.h>
 #include "bibliotecaTP1.1.h"
-/*
-int calcularSuma(int a, int b);
-int calcularResta(int a, int b);
-int calcularMultiplicacion(int a, int b);
-float calcularDivision(int a, int b);
-int calcularFactorial(int a);
-int calcularFactorial2(int b);*/
+
 
 
 int main(void) {
 
 	setbuf(stdout, NULL);
 
-	float x = 0;
-	float y = 0;
+
+	float x;
+	float y;
+	int bandera = 0;
 	float suma;
 	float resta;
 	float multiplicacion;
@@ -53,8 +49,8 @@ int main(void) {
 	{
 		printf("MENÚ DE OPCIONES\n");
 
-		printf("1. Ingresar primer operando: \n");
-		printf("2. Ingresar segundo operando: \n");
+		printf("1. Ingresar primer operando: A = %.2f\n", x);
+		printf("2. Ingresar segundo operando: B = %.2f \n", y);
 		printf("3. Calcular todas las operaciones: \n");
 		printf("a) Suma\n");
 		printf("b) Resta\n");
@@ -67,22 +63,24 @@ int main(void) {
 		scanf("%d", &opcion);
 		while(opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5)
 		{
-			printf("Error, debe ingresar alguna de las opciones enumeradas");
+			printf("Error, debe ingresar alguna de las opciones enumeradas\n");
 			printf("Presione cualquier tecla para continuar");
 			scanf("%d", &opcion);
 		}
 
-		switch(opcion)//int - char
+		switch(opcion)
 		{
 			case 1:
-				printf("Ingrese el primer operando\n");
-				scanf("%f", &x);
+				x = pedirNumero("Ingresar el primer operando\n", x);
+				printf("Primer operando: %.2f\n", x);
+				bandera++;
 			break;
 			case 2:
-				if(x != 0 )
+				if(bandera > 0)
 				{
-					printf("Ingrese el segundo operando\n");
-					scanf("%f", &y);
+					y = pedirNumero("Ingresar el segundo operando\n", y);
+					printf("Segundo operando: %.2f\n", y);
+					bandera++;
 				}
 				else
 				{
@@ -92,29 +90,21 @@ int main(void) {
 				}
 			break;
 			case 3:
-				if(x != 0 && y != 0)
+				if(bandera > 1 )
 				{
 					printf("Presione 4 para ver los resultados\n");
-					//printf("Ingreso a la opcion Suma\n");
+
 					suma = calcularSuma(x, y);
 
-					//printf("Ingreso a la opcion Resta\n");
 					resta = calcularResta(x, y);
 
-					//printf("Ingreso a la opcion Multiplicacion\n");
 					multiplicacion = calcularMultiplicacion(x,y);
 
-
-					//printf("Ingreso a la opcion Division\n");
 					division = calcularDivision(x,y);
 
-
-					//printf("Ingreso a la opcion Factorial\n");
-					//printf("Calculo con el primer operando: %d \n", x);
 					factorial = calcularFactorial(x);
 
-					//printf("Calculo con el segundo operando: %d\n", y);
-					factorial2 = calcularFactorial2(y);
+					factorial2 = calcularFactorial(y);
 				}
 				else
 				{
@@ -125,12 +115,19 @@ int main(void) {
 			break;
 			case 4:
 
-				printf("El resultado de %f + %f es: %f\n",x, y,  suma);
-				printf("El resultado de %f - %f es: %f\n",x, y, resta);
-				printf("El resultado de %f * %f es : %f\n",x, y, multiplicacion);
-				printf("El resultado de %f / %f es: %.2f\n",x, y, division);
-				printf("El factorial %f es: %f\n",x, factorial);
-				printf("El factorial del %f es: %f\n",y, factorial2);
+				printf("El resultado de %.2f + %.2f es: %.2f\n",x, y,  suma);
+				printf("El resultado de %.2f - %.2f es: %.2f\n",x, y, resta);
+				printf("El resultado de %.2f * %.2f es : %.2f\n",x, y, multiplicacion);
+				if(division == 0){
+					printf("Error en la division. No se puede dividir por 0\n");
+				}
+				else
+				{
+					printf("El resultado de %.2f / %.2f es: %.2f\n",x, y, division);
+
+				}
+				printf("El factorial %.2f es: %.2f\n",x, factorial);
+				printf("El factorial del %.2f es: %.2f\n",y, factorial2);
 			break;
 
 			case 5:
