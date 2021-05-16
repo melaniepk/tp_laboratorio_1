@@ -357,7 +357,15 @@ void MostrarTotalYPromedioDeSalarios(Empleado list[], int len)
 				mayorAPromedio++;
 			}
 		}
-		printf("La cantidad de empleados que superan el sueldo promedio es de %d", mayorAPromedio);
+
+		if(mayorAPromedio == 1)
+		{
+			printf("Solo un empleado supera el promedio de sueldos");
+		}
+		else
+		{
+			printf("La cantidad de empleados que superan el sueldo promedio es de %d", mayorAPromedio);
+		}
 	}
 
 }
